@@ -17,7 +17,9 @@ function App() {
   const [category, setCategory] = useState("");
   const [selectedFoods, setSelectedFoods] = useState([]);
   const [totalCal, setTotalCal] = useState(0);
-  const [day, setDay] = useEffect(() => {
+  const [day, setDay] = useState('') 
+  
+  useEffect(() => {
     console.log("Loading....");
     getFoods();
   }, []);
@@ -31,8 +33,12 @@ function App() {
       });
   };
 
+  function handleDay(e){
+    setDay(e.target.value)
+  }
+
   function handleDeleteFood(id) {
-    // alert('You dont like '`${foods.filter((food) => food.id === id)[0].name}`+ '? Grow up')
+    alert('You dont like '+ `${foods.filter((food) => food.id === id)[0].name}`+ '? Grow up')
     fetch("http://localhost:9292/foods/" + id, {
       method: "DELETE",
     }).then(() => {
@@ -49,7 +55,7 @@ function App() {
       const newFood = {
         ...selectedFoods,
         day: day,
-      };
+      }; 
       fetch("http://localhost:9292/eats", {
         method: "POST",
         headers: {
@@ -58,7 +64,6 @@ function App() {
         body: JSON.stringify(newFood),
       })
         .then((r) => r.json())
-        .then();
       setSelectedFoods([]);
       setTotalCal(0);
     }
@@ -132,6 +137,7 @@ function App() {
               submitMeal={submitMeal}
               displaycardResults={displaycardResults}
               totalCal={totalCal}
+              handleDay={handleDay}
             />
           }
         ></Route>
