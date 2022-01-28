@@ -1,6 +1,12 @@
 .App {
   text-align: center;
 }
+/* html, body {
+  background-image: url('https://fodmap-publicsite-us-east-2.s3.amazonaws.com/production/media/images/people_eating_.original.jpg');
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+} */
 
 .App-logo {
   height: 40vmin;
@@ -35,4 +41,34 @@
   to {
     transform: rotate(360deg);
   }
+}
+.food_card {
+  background-color: var(--color1);
+  border-color: var(--color1);
+  border-radius: 15px;
+  width: 10vw;
+  color: var(--color3);
+  border: 2px solid;
+  padding: 10;
+  margin: 10px;
+}
+
+.food_image {
+  border-radius: 10px;
+  text-align: right;
+  height: 40px;
+  margin: 1vh;
+}
+
+#cardResults {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 3px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px 4px #00000048;
+  margin-top: 50px;
+  margin-right: 10%;
+  margin-bottom: 100px;
+  padding: 20px;
+  margin-left: 10%;
 }
